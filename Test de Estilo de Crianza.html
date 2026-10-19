@@ -1,0 +1,618 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Test de Estilo de Crianza</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:wght@500;700;800&display=swap">
+<style>
+/* Concepto: ficha clínica sobre papel milimetrado. La pieza central es el plano calidez / exigencia, dibujado como una hoja de control del desarrollo. */
+:root{
+  --bg:#EDF2F4; --surface:#FFFFFF; --ink:#16282F; --muted:#51636C; --line:#D3DDE2; --grid:rgba(22,40,47,.08);
+  --soft:#E4ECEF; --btn:#16282F; --btn-ink:#FFFFFF; --focus:#2F6FDE;
+  --d:#0B6E60; --a:#5A45B8; --p:#9C6100; --n:#B02A52;
+  --warn-bg:#FFF4D6; --warn-ink:#5C4200; --warn-line:#E8CF83;
+  --font-display:'Bricolage Grotesque','Trebuchet MS',system-ui,sans-serif;
+  --font-body:'Atkinson Hyperlegible','Segoe UI',system-ui,-apple-system,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0E181D; --surface:#15242B; --ink:#E7EFF2; --muted:#9DB0B9; --line:#2A3D46; --grid:rgba(231,239,242,.07);
+    --soft:#1C2F37; --btn:#E7EFF2; --btn-ink:#0E181D; --focus:#6EA0FF;
+    --d:#3CC2AC; --a:#A394F0; --p:#E2B04A; --n:#F07A96;
+    --warn-bg:#3A2F10; --warn-ink:#F3DFA4; --warn-line:#6B5720; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0E181D; --surface:#15242B; --ink:#E7EFF2; --muted:#9DB0B9; --line:#2A3D46; --grid:rgba(231,239,242,.07);
+  --soft:#1C2F37; --btn:#E7EFF2; --btn-ink:#0E181D; --focus:#6EA0FF;
+  --d:#3CC2AC; --a:#A394F0; --p:#E2B04A; --n:#F07A96;
+  --warn-bg:#3A2F10; --warn-ink:#F3DFA4; --warn-line:#6B5720; color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--font-body);font-size:16px;line-height:1.55;
+  padding-block:20px 64px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.wrap{max-width:720px;margin:0 auto;display:grid;gap:20px}
+h1,h2,h3,h4{font-family:var(--font-display);line-height:1.15;margin:0;text-wrap:balance}
+h1{font-size:clamp(26px,7vw,34px);font-weight:800}
+h2{font-size:22px;font-weight:700}
+h3{font-size:18px;font-weight:700}
+p{margin:0}
+.eyebrow{font-size:12px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.fine{font-size:13.5px;color:var(--muted);line-height:1.5}
+.masthead{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:22px 20px;display:grid;gap:12px;
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:22px 22px}
+.masthead>*{min-width:0}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:20px;display:grid;gap:16px}
+.facts{list-style:none;margin:0;padding:0;display:grid;gap:6px;font-size:15px}
+.facts li::before{content:"";display:inline-block;width:8px;height:8px;margin-right:10px;background:var(--ink);transform:rotate(45deg)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media (max-width:520px){.grid2{grid-template-columns:1fr}}
+.field{display:grid;gap:6px;min-width:0}
+.field label{font-weight:700;font-size:15px}
+input[type=text],select{font:inherit;color:var(--ink);background:var(--surface);border:1.5px solid var(--line);border-radius:6px;padding:12px;min-height:48px;width:100%}
+input[type=text]:focus-visible,select:focus-visible,.btn:focus-visible,.tab:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+.btn{font:inherit;font-weight:700;background:var(--btn);color:var(--btn-ink);border:1.5px solid var(--btn);border-radius:6px;padding:12px 20px;min-height:48px;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--ink)}
+.btn.sm{min-height:40px;padding:8px 14px;font-size:14px}
+.btns{display:flex;flex-wrap:wrap;gap:10px}
+.err{color:var(--n);font-weight:700;font-size:14.5px}
+.saved ul{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.saved li{display:flex;justify-content:space-between;align-items:center;gap:12px;border-top:1px solid var(--line);padding-top:10px}
+.saved li>div{min-width:0;overflow-wrap:anywhere}
+/* cuestionario */
+.qhead{display:grid;gap:8px}
+.progress{height:8px;background:var(--soft);border-radius:4px;overflow:hidden}
+.progress i{display:block;height:100%;width:0;background:var(--btn);transition:width .3s}
+.q{display:grid;gap:10px;padding:18px 0;border-top:1px solid var(--line)}
+.q:first-child{border-top:0;padding-top:4px}
+.qt{font-size:17px;font-weight:700;line-height:1.4}
+.qn{font-family:var(--font-display);color:var(--muted);margin-right:4px;font-variant-numeric:tabular-nums}
+.scale{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+.scale label{position:relative;display:block}
+.scale input{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:pointer}
+.scale span{display:grid;place-items:center;min-height:50px;border:1.5px solid var(--line);border-radius:6px;background:var(--surface);font-weight:700;font-size:17px;font-variant-numeric:tabular-nums}
+.scale input:checked+span{background:var(--btn);color:var(--btn-ink);border-color:var(--btn)}
+.scale input:focus-visible+span{outline:3px solid var(--focus);outline-offset:2px}
+.scale-legend{display:flex;justify-content:space-between;gap:8px;font-size:13px;color:var(--muted)}
+.scale-legend .picked{color:var(--ink);font-weight:700;text-align:center}
+.q.missing{outline:2px solid var(--n);outline-offset:4px;border-radius:4px}
+/* resultado */
+.demo{background:var(--warn-bg);color:var(--warn-ink);border:1px solid var(--warn-line);border-radius:6px;padding:10px 14px;font-size:14.5px}
+.ficha{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px 16px;margin:0}
+.ficha div{min-width:0}
+.ficha dt{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.ficha dd{margin:2px 0 0;font-weight:700;overflow-wrap:anywhere}
+.tabs{display:grid;grid-template-columns:1fr 1fr;border:1.5px solid var(--ink);border-radius:6px;overflow:hidden}
+.tab{font:inherit;font-weight:700;background:var(--surface);color:var(--ink);border:0;padding:12px 8px;min-height:48px;cursor:pointer}
+.tab[aria-selected="true"]{background:var(--btn);color:var(--btn-ink)}
+.sec{display:grid;gap:12px;padding-top:26px;border-top:1px solid var(--line)}
+.sec:first-child{border-top:0;padding-top:0}
+.para{max-width:66ch}
+.list{margin:0;padding-left:20px;display:grid;gap:8px;max-width:66ch}
+.hero{display:grid;gap:6px}
+.hero h3{font-size:clamp(26px,7vw,32px);font-weight:800;color:var(--c)}
+.hero .slogan{font-weight:700}
+.dom{display:grid;gap:4px;padding:14px 0;border-top:1px solid var(--line);max-width:66ch}
+.dom h4{font-size:14px;letter-spacing:.04em;text-transform:uppercase}
+.bars{display:grid;gap:12px}
+.bar{display:grid;grid-template-columns:1fr auto;gap:4px 8px;align-items:baseline}
+.bar b{font-variant-numeric:tabular-nums}
+.bar .tag{font-size:12px;font-weight:700;margin-left:6px;padding:1px 7px;border:1.5px solid currentColor;border-radius:99px}
+.track{grid-column:1/-1;height:12px;background:var(--soft);border-radius:3px;overflow:hidden}
+.track i{display:block;height:100%;background:var(--c)}
+.cmp{display:grid;gap:14px}
+.cmp-s{display:grid;gap:4px}
+.cmp-s>strong{color:var(--c)}
+.cmp-r{display:grid;grid-template-columns:minmax(64px,28%) 1fr 42px;gap:8px;align-items:center;font-size:14px}
+.cmp-r>span:first-child{overflow-wrap:anywhere}
+.cmp-r .track{grid-column:auto}
+.cmp-r.two .track i{opacity:.5}
+.cmp-r em{font-style:normal;font-weight:700;text-align:right;font-variant-numeric:tabular-nums}
+.quadbox{max-width:400px;width:100%;margin:0 auto;display:grid;gap:8px}
+.quadsvg{width:100%;height:auto;display:block}
+.quadsvg text{fill:var(--muted);font-family:var(--font-body);font-size:11px;font-weight:700}
+.quadleg{display:flex;flex-wrap:wrap;gap:6px 16px;justify-content:center;font-size:14px}
+.dot{display:inline-block;width:14px;height:14px;border-radius:50%;border:2.5px solid var(--btn);vertical-align:-2px;margin-right:6px}
+.dot.fill{background:var(--btn)}
+textarea{font:inherit;font-size:13px;width:100%;min-height:160px;background:var(--surface);color:var(--ink);border:1.5px solid var(--line);border-radius:6px;padding:10px}
+@media (prefers-reduced-motion:reduce){.progress i{transition:none}}
+</style>
+
+<div class="wrap">
+
+<!-- INICIO -->
+<section id="s-intro" class="wrap">
+  <header class="masthead">
+    <p class="eyebrow">Para madres, padres y tutores · hijos de 6 a 14 años</p>
+    <h1>¿Cómo acompaña usted a su hijo o hija?</h1>
+    <p>Un test breve para conocer su estilo de crianza y entender, con base en la psicología del desarrollo, cómo puede influir en el bienestar de su hijo o hija.</p>
+    <ul class="facts">
+      <li>32 afirmaciones en 8 pasos, unos 8 minutos.</li>
+      <li>Cada progenitor responde por separado, sin consultar al otro.</li>
+      <li>Al terminar recibe un resumen y un informe completo con los nombres del niño o niña y de los padres.</li>
+    </ul>
+  </header>
+
+  <form id="form" class="card" autocomplete="off" novalidate>
+    <h2>Datos para el informe</h2>
+    <div class="grid2">
+      <div class="field"><label for="child">Nombre del niño o niña</label><input type="text" id="child" maxlength="40" required></div>
+      <div class="field"><label for="age">Edad</label>
+        <select id="age"></select></div>
+    </div>
+    <div class="grid2">
+      <div class="field"><label for="parent">Nombre de quien responde</label><input type="text" id="parent" maxlength="40" required></div>
+      <div class="field"><label for="role">Parentesco</label>
+        <select id="role"><option>Madre</option><option>Padre</option><option>Tutor/a</option><option>Otro</option></select></div>
+    </div>
+    <div class="field"><label for="other">Nombre del otro progenitor o tutor (opcional)</label><input type="text" id="other" maxlength="40"></div>
+    <p id="formerr" class="err" role="alert" hidden></p>
+    <div class="btns"><button class="btn" type="submit">Comenzar el test</button>
+      <button class="btn ghost" type="button" id="btn-demo">Ver un informe de ejemplo</button></div>
+    <p class="fine">Lo que responda no sale de este navegador. Si desea comparar a ambos progenitores, usen este mismo dispositivo.</p>
+  </form>
+
+  <section id="saved" class="card saved" hidden>
+    <h2>Informes guardados en este dispositivo</h2>
+    <ul id="saved-list"></ul>
+    <div class="btns"><button class="btn ghost sm" type="button" id="wipe">Borrar datos guardados</button></div>
+  </section>
+</section>
+
+<!-- CUESTIONARIO -->
+<section id="s-quiz" class="wrap" hidden>
+  <div class="card">
+    <div class="qhead">
+      <p class="eyebrow" id="qwho"></p>
+      <h2 id="qstep"></h2>
+      <div class="progress" role="progressbar" aria-label="Avance del test" aria-valuemin="0" aria-valuemax="32" id="pbar"><i id="pfill"></i></div>
+      <p class="fine">Piense en cómo actúa habitualmente en los últimos tres meses. Responda con sinceridad: no hay respuestas buenas ni malas.</p>
+    </div>
+    <div id="qlist"></div>
+    <p id="qerr" class="err" role="alert" hidden>Responda las cuatro afirmaciones para continuar.</p>
+    <div class="btns"><button class="btn ghost" type="button" id="qprev">Atrás</button><button class="btn" type="button" id="qnext">Siguiente</button></div>
+  </div>
+</section>
+
+<!-- RESULTADO -->
+<section id="s-result" class="wrap" hidden>
+  <p class="demo" id="demo-banner" hidden>Ejemplo con datos ficticios (Mateo, Ana y Luis) para mostrar cómo se ve un informe.</p>
+  <header class="masthead">
+    <p class="eyebrow">Informe de estilo de crianza</p>
+    <h2 id="r-child"></h2>
+    <dl class="ficha" id="r-ficha"></dl>
+  </header>
+  <div class="tabs" role="tablist" aria-label="Vista del informe">
+    <button class="tab" role="tab" id="tab-summary" aria-selected="true" aria-controls="view-summary" data-tab="summary">Resumen</button>
+    <button class="tab" role="tab" id="tab-full" aria-selected="false" aria-controls="view-full" data-tab="full">Informe completo</button>
+  </div>
+  <div id="view-summary" role="tabpanel" aria-labelledby="tab-summary" class="card"></div>
+  <div id="view-full" role="tabpanel" aria-labelledby="tab-full" class="card" hidden></div>
+  <div class="card">
+    <div class="btns">
+      <button class="btn" type="button" id="btn-copy">Copiar esta vista como texto</button>
+      <button class="btn ghost" type="button" id="btn-other">Que responda el otro progenitor</button>
+      <button class="btn ghost" type="button" id="btn-new">Nueva evaluación</button>
+    </div>
+    <p id="copymsg" class="fine" role="status"></p>
+    <textarea id="copyta" aria-label="Texto del informe" readonly hidden></textarea>
+  </div>
+</section>
+
+</div>
+
+<script>
+//#LOGIC_START
+const STYLES=['D','A','P','N'];
+const SN={D:'Democrático (autoritativo)',A:'Autoritario',P:'Permisivo',N:'Indiferente (negligente)'};
+const SSHORT={D:'Democrático',A:'Autoritario',P:'Permisivo',N:'Indiferente'};
+const SC={D:'var(--d)',A:'var(--a)',P:'var(--p)',N:'var(--n)'};
+const SLOGAN={D:'Calidez alta, límites claros',A:'Exigencia alta, calidez baja',P:'Calidez alta, límites débiles',N:'Calidez baja, supervisión baja'};
+const SDESC={
+  D:'Combina afecto, diálogo y normas firmes que se explican. {h} sabe qué se espera de su conducta y siente que sus emociones importan.',
+  A:'Prioriza la obediencia, el orden y la disciplina por encima del diálogo. Las normas se imponen más de lo que se explican y la expresión emocional de {h} tiene poco espacio.',
+  P:'Hay afecto y cercanía, pero pocas normas estables y consecuencias poco sostenidas. Se tiende a evitar el conflicto y la frustración de {h}.',
+  N:'Hay poca disponibilidad emocional y poca supervisión. Con frecuencia se debe a sobrecarga, estrés o dificultades del adulto, y no a falta de cariño.'
+};
+const LIK=['','Nunca','Rara vez','A veces','A menudo','Siempre'];
+const ITEMS={
+ D:['Cuando {h} me cuenta algo que le preocupa, dejo lo que estoy haciendo y lo escucho con atención.',
+    'Explico a {h} las razones de las reglas de la casa.',
+    'Mantengo un límite aunque {h} proteste, y lo hago con un tono tranquilo.',
+    'Reconozco con detalle lo que {h} hace bien, no solo sus resultados o sus notas.',
+    'Dejo que {h} elija entre opciones razonables (ropa, actividades, cómo organizar sus tareas).',
+    'Cuando {h} se equivoca, converso sobre lo ocurrido y cómo repararlo antes de aplicar una consecuencia.',
+    'Reconozco las emociones de {h} (enojo, tristeza, miedo) aunque no apruebe lo que hizo.',
+    'Las consecuencias de romper una norma están claras de antemano y las cumplo con coherencia.'],
+ A:['Espero que {h} obedezca sin discutir ni pedir explicaciones.',
+    'Cuando {h} me contradice, respondo que “aquí se hace lo que yo digo”.',
+    'Uso gritos, amenazas o castigos fuertes para que {h} me haga caso.',
+    'Soy muy exigente con los horarios, las tareas y las notas, y reacciono con dureza cuando {h} no cumple.',
+    'Uso la culpa o la vergüenza (“me decepcionas”, “después de todo lo que hago por ti”) para corregir a {h}.',
+    'Comparo a {h} con hermanos, primos o compañeros para motivarle.',
+    'Dejo de hablarle o me muestro frío cuando {h} se porta mal.',
+    'Recurro a nalgadas, golpes o jalones para corregir a {h}.'],
+ P:['Me cuesta decir “no” a {h}, aunque sé que es lo correcto.',
+    'Cuando {h} insiste, termino cediendo.',
+    'Evito poner consecuencias porque no quiero que {h} se enoje o sufra.',
+    'Resuelvo por {h} problemas que podría resolver por su cuenta (tareas, mochila, conflictos con amigos).',
+    'Las reglas de la casa (pantallas, horarios, tareas) cambian según mi ánimo o mi cansancio.',
+    'Prefiero ser cómplice de {h} antes que quien pone los límites.',
+    'Ante una mala conducta de {h}, suelo justificarla (“son cosas de la edad”, “ya se le pasará”).',
+    'Dejo que {h} use pantallas o coma lo que quiera para evitar conflictos.'],
+ N:['Por el trabajo o el cansancio, hay días en que casi no converso con {h}.',
+    'No siempre sé con quién está {h}, qué hace después de la escuela o qué ve en internet.',
+    'Me entero tarde de lo que pasa en la escuela de {h} (tareas, notas, comunicados).',
+    'Rara vez comparto con {h} un juego, un paseo o una conversación a solas.',
+    'Cuando {h} necesita ayuda con una tarea o con un problema, suelo decir que no tengo tiempo.',
+    'Me cuesta saber qué siente {h} o qué le preocupa.',
+    'Dejo que {h} se organice por su cuenta en casi todo porque no tengo tiempo ni energía.',
+    'Aunque existan reglas, rara vez verifico que se cumplan.']
+};
+const QUIZ=[];
+for(let p=0;p<8;p++){for(let k=0;k<4;k++){const s=STYLES[(k+p)%4];QUIZ.push({id:s+(p+1),s,t:ITEMS[s][p]});}}
+
+const DOMS=[['apego','Apego y seguridad emocional'],['emocional','Regulación emocional y manejo del estrés'],['autoestima','Autoestima y autoconcepto'],
+ ['conducta','Conducta y salud mental'],['escuela','Aprendizaje y desempeño escolar'],['social','Relaciones con pares y habilidades sociales'],['autonomia','Autonomía e identidad']];
+
+const CONTENT={
+ D:{dom:{
+  apego:'Este estilo favorece que {h} construya un apego seguro: sabe que usted está disponible y que responde de forma predecible, de modo que puede usarle como base segura para explorar, equivocarse y volver a pedir ayuda. En la edad escolar esto se refleja en confianza para contar errores y preocupaciones.',
+  emocional:'La combinación de validación emocional y límites (lo que Gottman llama entrenamiento emocional) se asocia con mejor regulación del enojo y de la ansiedad, mayor tolerancia a la frustración y una recuperación más rápida después del estrés. {h} aprende a poner palabras a lo que siente en lugar de actuarlo.',
+  autoestima:'Es el contexto más favorable para un autoconcepto estable y realista. Como el afecto no depende del rendimiento, {h} puede valorarse sin necesidad de ser perfecto y tolera mejor la crítica y el fracaso.',
+  conducta:'En los metaanálisis, el estilo autoritativo se asocia con menos problemas externalizantes (desafío, agresión) e internalizantes (ansiedad, ánimo bajo) que los otros tres estilos. Además favorece que las normas se internalicen: se cumplen también cuando no hay un adulto presente.',
+  escuela:'Se asocia, en promedio, con mayor motivación intrínseca, mejor autorregulación de la atención y de las tareas, y mejores resultados escolares (Steinberg y cols., 1994; Pinquart, 2016). El error se interpreta como parte del aprendizaje y no como una amenaza.',
+  social:'{h} tiende a desarrollar mejor empatía, negociación y resolución de conflictos con sus pares, y presenta menor riesgo de verse involucrado en situaciones de acoso, ya sea como víctima o como agresor.',
+  autonomia:'La autonomía se amplía de forma gradual y acompañada. En la preadolescencia esto permite que la búsqueda de identidad ocurra con diálogo y no con ruptura, y se asocia con menor consumo temprano de sustancias y menos conductas de riesgo.'},
+  short:['Apego seguro: {h} puede apoyarse en usted para explorar y pedir ayuda.','En promedio, mejor regulación emocional y menos problemas de conducta y de ansiedad.','Mayor motivación y autonomía para estudiar y relacionarse con otros.'],
+  recs:['Mantener la explicación breve de las normas y revisarlas con {h} cada cierto tiempo, sobre todo al cambiar de etapa.','Seguir validando la emoción antes de corregir la conducta: “entiendo que estés enojado; igual no se golpea”.','Cuidar la coherencia en los días de cansancio: una norma que se cumple a medias enseña que es negociable.','Ampliar de forma gradual las decisiones propias de {h} según su edad (ropa, tiempos de estudio, ahorro, actividades).','Acordar con el otro progenitor las normas centrales, para que {h} reciba un mensaje único.'],
+  band:{b1:'A esta edad el estilo democrático se traduce en rutinas estables, elogios concretos y explicaciones breves. Conviene sostener el contacto físico y el juego compartido.',b2:'Mantener la negociación de normas y el reconocimiento del esfuerzo protege el autoconcepto escolar y social de {h} frente a la comparación con otros niños.',b3:'Es el mejor punto de partida para la adolescencia: sostener el diálogo, ampliar autonomías de forma gradual y mantener límites claros en seguridad, pantallas y horarios.'}},
+ A:{dom:{
+  apego:'Cuando el afecto parece depender de la obediencia, {h} puede desarrollar un apego inseguro (evitativo o ansioso). Aprende a anticipar la reacción del adulto, a ocultar errores y a guardarse lo que siente para evitar el castigo: en casa se ve obediencia, pero hay menos confianza.',
+  emocional:'Si el enojo, el miedo o el llanto se reprimen o se sancionan, los niños tienden a regular sus emociones por supresión. Esto se asocia con mayor activación interna de estrés, irritabilidad diferida y síntomas de ansiedad, además de hipervigilancia frente al adulto.',
+  autoestima:'La autoestima suele ser frágil y condicionada al cumplimiento. Aparecen perfeccionismo, miedo a fallar y autocrítica intensa. El uso de culpa, vergüenza o comparaciones (control psicológico; Barber, 1996) es de los factores de crianza más dañinos para el autoconcepto.',
+  conducta:'Se asocia con más problemas internalizantes (ansiedad, ánimo bajo, quejas somáticas) y también externalizantes (desafío, mentira, agresión con pares), sobre todo cuando hay castigo físico u hostilidad (Pinquart, 2017). La conducta mejora frente al adulto, pero se cumple por miedo y no por convicción.',
+  escuela:'Puede haber buenos resultados iniciales por la presión, pero con menor motivación propia, más ansiedad ante las evaluaciones y mayor evitación de la tarea cuando disminuye la supervisión. Los errores tienden a esconderse en lugar de consultarse.',
+  social:'Pueden observarse dos patrones opuestos: sumisión ante pares dominantes, o reproducción de la dureza aprendida con compañeros más débiles. En ambos casos se resienten la empatía y la asertividad.',
+  autonomia:'Las decisiones propias se frenan. En la preadolescencia aumenta el riesgo de conflicto abierto, secretismo o distanciamiento, y de recurrir a la mentira como protección, justo cuando {h} más necesita confiar en usted.'},
+  short:['Obediencia visible, pero con riesgo de miedo a equivocarse y de ocultar errores o emociones.','Más riesgo de ansiedad, baja autoestima y, en la adolescencia, conflicto abierto o secretismo.','Rendimiento por presión: resultados a corto plazo, con menos motivación propia.'],
+  recs:['Reemplazar la orden por una frase de explicación: “el celular se guarda a las 9 porque necesitas dormir 10 horas”.','Separar el error de la persona. Evitar frases como “me decepcionas” o comparaciones con otros niños; describir la conducta y la reparación esperada.','Reservar cada día 10 minutos de atención exclusiva a {h}, sin corregir ni preguntar por tareas: un juego, una conversación o lo que {h} elija.','Sustituir gritos, amenazas o golpes por consecuencias lógicas, breves y anunciadas de antemano. Las guías pediátricas internacionales desaconsejan el castigo corporal, que se asocia con más agresión y ansiedad.','Practicar la pausa: bajar la voz y responder después. Cuando uno se excede, reparar con {h} y pedir disculpas; eso modela responsabilidad.'],
+  band:{b1:'A los 6–8 años la presión excesiva puede traducirse en miedo a equivocarse, mentiras para evitar el castigo y malestares físicos (dolor de estómago o de cabeza) antes de ir a la escuela.',b2:'A los 9–11 años aumenta el riesgo de perfeccionismo, ansiedad por el rendimiento y comparación con pares. Conviene pasar de la orden a la explicación.',b3:'A los 12–14 años el estilo rígido tiende a provocar conflicto abierto, secretismo o distanciamiento. Es el momento de negociar más y mandar menos.'}},
+ P:{dom:{
+  apego:'Suele existir un vínculo cálido y cercano. Sin embargo, sin estructura previsible {h} no siempre se siente contenido ante las emociones intensas: nadie sostiene el límite que necesita para sentirse seguro, y la respuesta del adulto cambia según el ánimo del día.',
+  emocional:'Tolera menos la frustración y la espera, porque pocas veces enfrenta un “no” sostenido. Cuando el adulto cede ante el enojo o el llanto, {h} no practica regular sus propias emociones, lo que retrasa el desarrollo de la autorregulación.',
+  autoestima:'Puede mostrar una autoestima alta en apariencia, pero poco apoyada en competencias reales. Cuando la realidad exige esfuerzo (escuela, grupo de pares) pueden aparecer frustración intensa, sensación de injusticia o caídas bruscas de la confianza.',
+  conducta:'Se asocia con más problemas externalizantes leves a moderados (impulsividad, desafío de normas, mucho tiempo de pantalla) y, en la adolescencia, con mayor riesgo de consumo temprano de alcohol y otras sustancias, aunque con buen bienestar psicológico general (Steinberg y cols., 1994).',
+  escuela:'Dificultad para sostener la rutina, el esfuerzo y la tarea sin supervisión externa. El rendimiento es más variable y la persistencia ante la dificultad es baja, aun con buena capacidad.',
+  social:'Puede ser sociable y expresivo, pero con dificultad para ceder, esperar turnos o aceptar el “no” de otros niños, lo que puede traducirse en conflictos o rechazo en los juegos grupales.',
+  autonomia:'Se confunde libertad con ausencia de guía: o bien se delegan decisiones para las que {h} aún no tiene madurez, o bien los adultos resuelven lo que {h} ya podría hacer por su cuenta. En ambos casos se retrasa el sentimiento de competencia propia, y en la preadolescencia falta un marco que contenga la experimentación.'},
+  short:['Vínculo cálido, pero con menor tolerancia a la frustración y al “no”.','Más impulsividad y dificultad para sostener rutinas, tareas y esfuerzo.','Mayor riesgo de conductas de riesgo en la adolescencia si no hay un marco claro.'],
+  recs:['Elegir tres normas innegociables (sueño, pantallas, respeto) y sostenerlas con voz calmada, sin largas discusiones ni cambios según el ánimo.','Decir el “no” una sola vez, con empatía y sin pedir perdón: “sé que te molesta, y la respuesta sigue siendo no”. Tolerar la queja sin ceder.','Aplicar consecuencias pequeñas y cumplibles, anunciadas antes (“si no guardas los juguetes, mañana no se usan”), y cumplirlas.','Asignar a {h} responsabilidades del hogar acordes a su edad y dejar que resuelva por su cuenta lo que ya puede hacer.','Distinguir entre ser cercano y ser un igual: se puede tener complicidad y, a la vez, ser la autoridad que cuida.'],
+  band:{b1:'A los 6–8 años lo más urgente es instalar rutinas básicas (sueño, comidas, pantallas, tareas) y sostener un “no” calmado sin ceder ante el llanto.',b2:'A los 9–11 años conviene dejar que {h} enfrente las consecuencias naturales de sus decisiones (olvidos, tareas) y evitar resolver lo que ya puede resolver por su cuenta.',b3:'A los 12–14 años la falta de marco aumenta la exposición a riesgos (pantallas nocturnas, salidas sin supervisión, sustancias). Se necesitan acuerdos claros y verificables.'}},
+ N:{dom:{
+  apego:'Es el estilo de mayor riesgo para el vínculo: la baja disponibilidad emocional se asocia con apego inseguro o desorganizado y con la sensación de no ser una prioridad. Suele deberse a sobrecarga (trabajo, estrés, salud del adulto) y no a falta de amor, pero {h} puede vivirla como falta de interés.',
+  emocional:'{h} regula sus emociones sin modelo ni apoyo. Pueden aparecer retraimiento, tristeza, irritabilidad o conductas para llamar la atención. Sin un adulto que nombre y contenga lo que siente, el vocabulario emocional se desarrolla menos.',
+  autoestima:'Tiende a una autoestima baja o inestable, con la idea de no importar o de ser una carga. La falta de atención y de reconocimiento se interpreta como falta de valor personal.',
+  conducta:'En la investigación es el estilo asociado a peores resultados en casi todos los indicadores: más problemas externalizantes (agresión, conducta antisocial, consumo temprano) e internalizantes (depresión, ansiedad). La baja supervisión es uno de los predictores más sólidos de conductas de riesgo en la preadolescencia.',
+  escuela:'Mayor riesgo de bajo rendimiento, ausentismo, tareas incompletas y abandono, porque nadie sostiene la rutina ni da sentido al esfuerzo. Las dificultades de atención o de aprendizaje pueden pasar inadvertidas durante mucho tiempo.',
+  social:'Más vulnerabilidad a la influencia de pares con conductas de riesgo y a la exposición sin supervisión a internet y redes, y menor red adulta de apoyo ante el acoso.',
+  autonomia:'La autonomía es forzada o prematura: {h} se cría por su cuenta sin haber desarrollado todavía los recursos para hacerlo. Parece independiente, pero es una independencia por defecto. En la preadolescencia aumenta el riesgo de buscar pertenencia y límites fuera del hogar.'},
+  short:['Riesgo de vínculo inseguro: {h} puede vivir la baja disponibilidad como falta de interés.','Mayor riesgo de ansiedad, ánimo bajo, bajo rendimiento y conductas de riesgo.','La supervisión es lo primero que conviene recuperar.'],
+  recs:['Reservar un ritual diario de contacto: 10 a 15 minutos de atención total, sin pantallas (cena, trayecto a la escuela, antes de dormir).','Armar un sistema simple de supervisión: saber con quién está {h}, dónde y qué ve en línea, y revisar la agenda o los comunicados de la escuela una vez por semana.','Preguntar con curiosidad y escuchar sin corregir: “¿qué fue lo mejor y lo más difícil de tu día?”.','Si la causa es la sobrecarga (trabajo, cansancio, estrés o ánimo bajo), buscar apoyo en la familia, en el otro progenitor, en la escuela o en un profesional. Cuidarse también es cuidar a {h}.','Acordar pocas normas claras y verificables (horarios, tareas, pantallas) y comprobar que se cumplen.'],
+  band:{b1:'A los 6–8 años {h} todavía no puede cuidarse emocionalmente ni organizarse por su cuenta: necesita presencia diaria, aunque sea breve, y rutinas supervisadas.',b2:'A los 9–11 años hace falta saber con quién está {h}, qué hace en línea y cómo va en la escuela. Unos minutos diarios de atención plena, sin pantallas, suelen aportar más que mucho tiempo compartido con la atención dividida.',b3:'A los 12–14 años la supervisión escasa es un factor de riesgo prioritario: se aconseja retomar el contacto cotidiano y conocer a sus amistades antes de que surjan problemas.'}}
+};
+const BANDS={
+ b1:{label:'infancia media',t:'Etapa de consolidación de rutinas y reglas: {h} aprende la lectoescritura, depende todavía del adulto para regular sus emociones y necesita previsibilidad. Pesan más el afecto físico y verbal, las rutinas estables y las consecuencias breves y proporcionadas.'},
+ b2:{label:'infancia tardía',t:'Etapa de laboriosidad (Erikson): {h} se compara con otros, construye su autoconcepto escolar y social y empieza a cuestionar las reglas con argumentos. Pesan más el reconocimiento del esfuerzo, evitar las comparaciones y abrir espacio de negociación sobre las normas.'},
+ b3:{label:'adolescencia temprana',t:'Cambios puberales, mayor reactividad emocional (el sistema límbico madura antes que la corteza prefrontal, que modula el impulso), búsqueda de identidad y peso creciente del grupo de pares. Pesan más mantener la conexión, supervisar sin invadir, negociar normas y respetar la intimidad.'}
+};
+const PAIR={
+ DA:'Se combinan una base de diálogo con momentos de dureza. Conviene observar qué situaciones (prisa, cansancio, notas) activan el tono autoritario y mantener la explicación incluso en esos momentos.',
+ DP:'El afecto y la comunicación son sólidos; el desafío está en sostener los límites cuando {h} protesta o cuando hay cansancio. Elegir pocas normas centrales y cumplirlas siempre.',
+ DN:'Se alternan momentos de buena conexión con períodos de poca disponibilidad o supervisión, probablemente ligados a la carga de trabajo. Conviene proteger rituales breves y constantes de contacto.',
+ AP:'Se alternan períodos de rigidez con períodos de cesión, lo que vuelve impredecible la respuesta del adulto. Esa inconsistencia suele aumentar el desafío; conviene fijar un punto medio estable.',
+ AN:'La combinación de exigencia con baja disponibilidad emocional es de las que más se asocian con malestar en niños. Se recomienda sumar calidez y presencia antes que más normas.',
+ PN:'Pocas normas y poca supervisión conviven con una cercanía irregular. Prioridad: rutinas básicas y supervisión sencilla, y luego límites graduales.'
+};
+const FLAGS={
+ fisico:['Castigo físico','Se refieren conductas de castigo físico. La evidencia acumulada lo asocia con más agresión, más problemas de salud mental y peor relación entre padres e hijos, sin mejorar la obediencia a largo plazo. Se recomienda sustituirlo por consecuencias lógicas y buscar apoyo para manejar la ira.'],
+ psico:['Control psicológico','Se refieren conductas de control psicológico (culpa, vergüenza, comparación o retiro del afecto). Es una de las dimensiones de crianza más ligadas a ansiedad, depresión y baja autoestima en la infancia y la preadolescencia (Barber, 1996). Conviene corregir la conducta sin cuestionar el valor de {h} como persona.'],
+ monitoreo:['Supervisión baja','Se refiere poca supervisión (con quién está {h}, qué hace, tareas y escuela). El monitoreo parental es protector frente a conductas de riesgo y acoso, y se logra mejor con conversación habitual que con vigilancia.'],
+ consistencia:['Inconsistencia en las normas','Se refiere inconsistencia en las normas o en las consecuencias. Esa falta de coherencia vuelve impredecible al adulto y suele aumentar el desafío: {h} aprende que insistir funciona.'],
+ emocion:['Poca validación emocional','Se refiere poca escucha o validación de las emociones. Nombrar lo que {h} siente antes de corregir reduce la intensidad del conflicto y enseña regulación.']
+};
+const REFS=[
+ 'Baumrind, D. (1966). Effects of authoritative parental control on child behavior. Child Development, 37(4).',
+ 'Maccoby, E. E. y Martin, J. A. (1983). Socialization in the context of the family: Parent–child interaction. En Handbook of Child Psychology, vol. 4.',
+ 'Darling, N. y Steinberg, L. (1993). Parenting style as context: An integrative model. Psychological Bulletin, 113(3).',
+ 'Steinberg, L., Lamborn, S. D., Darling, N., Mounts, N. S. y Dornbusch, S. M. (1994). Over-time changes in adjustment and competence among adolescents from authoritative, authoritarian, indulgent, and neglectful families. Child Development, 65(3).',
+ 'Barber, B. K. (1996). Parental psychological control: Revisiting a neglected construct. Child Development, 67(6).',
+ 'Gottman, J. M., Katz, L. F. y Hooven, C. (1996). Parental meta-emotion philosophy and the emotional life of families. Journal of Family Psychology, 10(3).',
+ 'Pinquart, M. (2016). Associations of parenting styles and dimensions with academic achievement in children and adolescents: A meta-analysis. Educational Psychology Review, 28.',
+ 'Pinquart, M. (2017). Associations of parenting dimensions and styles with externalizing problems of children and adolescents: An updated meta-analysis. Developmental Psychology, 53(5).'
+];
+
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const mean=a=>a.reduce((x,y)=>x+y,0)/a.length;
+function bandOf(age){return age<=8?'b1':age<=11?'b2':'b3';}
+function level(v){return v<35?'baja':v>65?'alta':'media';}
+function fmtDate(ts){try{return new Date(ts).toLocaleDateString('es-BO',{day:'numeric',month:'long',year:'numeric'});}catch(e){return '';}}
+
+function compute(ans){
+  const sc={},pct={};
+  STYLES.forEach(s=>{sc[s]=mean([1,2,3,4,5,6,7,8].map(i=>ans[s+i]));pct[s]=Math.round((sc[s]-1)/4*100);});
+  const order=[...STYLES].sort((x,y)=>sc[y]-sc[x]);
+  const top=order[0],second=order[1];
+  const vals=STYLES.map(s=>sc[s]);
+  const spread=Math.max(...vals)-Math.min(...vals);
+  const cal=((sc.D+sc.P)-(sc.A+sc.N))/2, exi=((sc.D+sc.A)-(sc.P+sc.N))/2;
+  const g=id=>ans[id];
+  return {ans,sc,pct,order,top,second,
+    mixed:(sc[top]-sc[second])<0.35, undiff:spread<0.6,
+    calP:Math.round((cal+4)/8*100), exiP:Math.round((exi+4)/8*100),
+    flags:{fisico:g('A8')>=3, psico:mean([g('A5'),g('A6'),g('A7')])>=3, monitoreo:mean([g('N2'),g('N3'),g('N8')])>=3,
+      consistencia:g('P5')>=4||g('D8')<=2, emocion:mean([g('D1'),g('D7')])<=2.5}};
+}
+function hydrate(rec){return Object.assign(compute(rec.ans),{child:rec.child,age:rec.age,parent:rec.parent,role:rec.role,otherName:rec.other||'',ts:rec.ts});}
+
+function itemLists(res){
+  const q=id=>QUIZ.find(x=>x.id===id);
+  const F=t=>t.replace(/\{h\}/g,res.child);
+  const line=x=>F(x.t)+' ('+LIK[res.ans[x.id]]+')';
+  const strengths=QUIZ.filter(x=>x.s==='D'&&res.ans[x.id]>=4).sort((a,b)=>res.ans[b.id]-res.ans[a.id]).slice(0,3).map(line);
+  const gravity=x=>x.s==='D'?6-res.ans[x.id]:res.ans[x.id];
+  const review=QUIZ.filter(x=>(x.s!=='D'&&res.ans[x.id]>=4)||(x.s==='D'&&res.ans[x.id]<=2)).sort((a,b)=>gravity(b)-gravity(a)).slice(0,4).map(line);
+  return {strengths,review};
+}
+function cmpBlocks(res,other){
+  const a=res.parent,b=other.parent,c=res.child,out=[];
+  if(res.top===other.top) out.push('Ambos progenitores coinciden en el estilo predominante ('+SSHORT[res.top]+'). Esa coherencia le da a '+c+' un entorno más predecible, que es en sí mismo un factor protector.');
+  else out.push('El estilo predominante de '+a+' es '+SSHORT[res.top]+' y el de '+b+' es '+SSHORT[other.top]+'. Tener estilos distintos no es un problema en sí cuando ambos son cálidos y coinciden en las normas centrales. El riesgo aparece cuando uno se vuelve más estricto porque el otro cede, y viceversa: '+c+' puede aprender a negociar con uno contra el otro y los adultos tienden a polarizarse.');
+  if(Math.abs(res.exiP-other.exiP)>=25) out.push('Hay una diferencia marcada en el nivel de exigencia ('+a+': '+res.exiP+'/100; '+b+': '+other.exiP+'/100). Se sugiere acordar las normas centrales (sueño, pantallas, tareas, respeto, consecuencias) y aplicarlas de la misma forma.');
+  if(Math.abs(res.calP-other.calP)>=25) out.push('Hay una diferencia marcada en calidez y receptividad ('+a+': '+res.calP+'/100; '+b+': '+other.calP+'/100). Conviene que '+c+' reciba muestras de afecto y de escucha de ambos.');
+  out.push('Se recomienda conversar estos resultados entre ambos sin buscar culpables: el objetivo es que '+c+' encuentre en casa un mensaje coherente y afectuoso.');
+  return out;
+}
+
+function buildDoc(res,other){
+  const F=t=>t.replace(/\{h\}/g,res.child);
+  const h=res.child, C=CONTENT[res.top], band=bandOf(res.age), B=BANDS[band];
+  const roleName=res.role+': '+res.parent;
+  const otherName=other?other.parent:(res.otherName||'No indicado');
+  const header=[['Niño/a',h],['Edad',res.age+' años ('+B.label+')'],['Responde',roleName],['Otro progenitor o tutor',other?(other.role+': '+other.parent):otherName],['Fecha',fmtDate(res.ts)]];
+  const L=itemLists(res);
+  const flagsOn=Object.keys(res.flags).filter(k=>res.flags[k]);
+  const resultBlocks=[{k:'style',s:res.top,c:h},{k:'bars',res}];
+  if(res.mixed) resultBlocks.push({k:'p',t:'Perfil mixto: además del estilo '+SSHORT[res.top]+' aparece con fuerza el estilo '+SSHORT[res.second]+' (diferencia de '+(res.pct[res.top]-res.pct[res.second])+' puntos). '+F(PAIR[[res.top,res.second].sort((x,y)=>STYLES.indexOf(x)-STYLES.indexOf(y)).join('')])});
+  if(res.undiff) resultBlocks.push({k:'note',t:'Las cuatro puntuaciones son muy parecidas. Esto puede reflejar una tendencia a responder de forma afirmativa o central. Conviene interpretar el perfil con cautela y repetir el test en otro momento.'});
+  resultBlocks.push({k:'quad',res,other});
+
+  const rev=L.review.length?L.review:['No se identifican conductas con frecuencia alta fuera del estilo democrático.'];
+  const strg=L.strengths.length?L.strengths:['Ninguna afirmación del estilo democrático alcanzó frecuencia alta. Puede empezar por una sola: escuchar a '+h+' sin interrumpir durante unos minutos al día.'];
+
+  const summary=[
+    {t:'Resultado',b:resultBlocks},
+    {t:'Qué puede significar para '+h,b:[{k:'ul',t:C.short.map(F)}]},
+    {t:'Lo que ya suma y lo que conviene revisar',b:[{k:'p',t:'Conductas que sostienen el vínculo'},{k:'ul',t:strg},{k:'p',t:'Conductas para revisar'},{k:'ul',t:rev.slice(0,3)}]},
+    {t:'Tres pasos para esta semana',b:[{k:'ul',t:C.recs.slice(0,3).map(F)}]}
+  ];
+  if(other) summary.push({t:'Con el otro progenitor',b:[{k:'p',t:(res.top===other.top?'Ambos coinciden en el estilo predominante ('+SSHORT[res.top]+').':res.parent+' ('+SSHORT[res.top]+') y '+other.parent+' ('+SSHORT[other.top]+') muestran estilos distintos.')+' El detalle está en el informe completo.'}]});
+  summary.push({t:'Alcance',b:[{k:'note',t:'Orientación familiar basada en autorreporte. No es una prueba psicométrica validada ni un diagnóstico clínico.'}]});
+
+  const full=[
+    {t:'1. Resultado',b:resultBlocks},
+    {t:'2. Cómo se refleja en '+h,b:[{k:'p',t:'Análisis clínico y psicológico del posible efecto del estilo '+SSHORT[res.top]+' en el desarrollo de '+h+'. Se trata de tendencias observadas en la investigación, no de predicciones: cada niño responde de manera distinta según su temperamento, su contexto y el resto de su entorno.'}].concat(DOMS.map(d=>({k:'dom',h:d[1],t:F(C.dom[d[0]])})))},
+    {t:'3. Lectura según la etapa de '+h,b:[{k:'p',t:h+' tiene '+res.age+' años ('+B.label+'). '+F(B.t)},{k:'p',t:F(C.band[band])}]},
+    {t:'4. Su perfil en detalle',b:[{k:'p',t:'Conductas que sostienen el vínculo (frecuencia alta en el estilo democrático)'},{k:'ul',t:strg},{k:'p',t:'Conductas para revisar'},{k:'ul',t:rev}]}
+  ];
+  if(flagsOn.length) full.push({t:'5. Alertas específicas',b:flagsOn.map(k=>({k:'dom',h:FLAGS[k][0],t:F(FLAGS[k][1])}))});
+  full.push({t:(flagsOn.length?'6':'5')+'. Recomendaciones',b:[{k:'ul',t:C.recs.map(F)}]});
+  let n=flagsOn.length?7:6;
+  if(other){full.push({t:n+'. Coordinación entre '+res.parent+' y '+other.parent,b:[{k:'cmp',res,other}].concat(cmpBlocks(res,other).map(t=>({k:'p',t})))});n++;}
+  else full.push({t:n+'. Coordinación con el otro progenitor',b:[{k:'p',t:'La crianza funciona mejor cuando ambos adultos coinciden en lo esencial. Para ver aquí la comparación, '+(res.otherName||'el otro progenitor o tutor')+' puede responder el test en este mismo dispositivo con el nombre de '+h+'; luego puede abrir este informe desde la lista de informes guardados.'}]}),n++;
+  full.push({t:n+'. Cuándo consultar a un profesional',b:[{k:'p',t:'Conviene consultar con un psicólogo o con el pediatra si '+h+' presenta tristeza o irritabilidad que dura más de dos semanas, rechazo a ir a la escuela, cambios bruscos de sueño o apetito, molestias físicas repetidas sin causa médica, agresividad intensa o aislamiento. Si dice que quiere morir o hacerse daño, consulte de inmediato con un profesional de salud mental o con un servicio de emergencia.'}]});n++;
+  full.push({t:n+'. Alcance y limitaciones',b:[
+    {k:'p',t:'Este instrumento se inspira en el modelo de Baumrind y de Maccoby y Martin (calidez y exigencia). Es una herramienta de orientación y autoconocimiento: no es una escala psicométrica validada ni establece un diagnóstico.'},
+    {k:'p',t:'Se basa en lo que cada progenitor refiere sobre sí mismo, por lo que puede estar influido por la deseabilidad social. El estilo de crianza no determina por sí solo el desarrollo: también influyen el temperamento del niño, la escuela, la salud, el contexto social y la cultura, y la relación es bidireccional, porque la conducta del niño también modela la respuesta de los adultos.'},
+    {k:'p',t:'El mismo comportamiento puede tener significados distintos según la cultura de la familia. En general, la investigación señala que lo que más se asocia con malestar es el control sin calidez.'}]});
+  n++;
+  full.push({t:n+'. Referencias',b:[{k:'ul',t:REFS}]});
+  return {header,summary,full};
+}
+
+function blockText(b){
+  switch(b.k){
+    case 'p': case 'note': return [b.t];
+    case 'ul': return b.t.map(x=>'• '+x);
+    case 'dom': return [b.h+': '+b.t];
+    case 'style': return [SN[b.s]+' — '+SLOGAN[b.s],SDESC[b.s].replace(/\{h\}/g,b.c)];
+    case 'bars': return STYLES.map(s=>SN[s]+': '+b.res.pct[s]+'%');
+    case 'quad': return ['Calidez y receptividad: '+b.res.calP+'/100 ('+level(b.res.calP)+') · Exigencia y control: '+b.res.exiP+'/100 ('+level(b.res.exiP)+')'+(b.other?' | '+b.other.parent+': calidez '+b.other.calP+'/100, exigencia '+b.other.exiP+'/100':'')];
+    case 'cmp': return STYLES.map(s=>SN[s]+': '+b.res.parent+' '+b.res.pct[s]+'% · '+b.other.parent+' '+b.other.pct[s]+'%');
+  }
+  return [];
+}
+function toText(doc,tab){
+  const L=[tab==='summary'?'RESUMEN DEL INFORME DE ESTILO DE CRIANZA':'INFORME DE ESTILO DE CRIANZA'];
+  doc.header.forEach(([k,v])=>L.push(k+': '+v));
+  L.push('');
+  (tab==='summary'?doc.summary:doc.full).forEach(sec=>{L.push(sec.t.toUpperCase());sec.b.forEach(b=>L.push(...blockText(b)));L.push('');});
+  return L.join('\n');
+}
+
+const A1={D:[5,4,4,4,4,4,5,3],A:[2,1,1,2,1,2,1,1],P:[3,4,3,2,4,3,3,4],N:[2,2,1,2,1,2,1,1]};
+const A2={D:[3,2,2,2,2,2,2,3],A:[4,4,3,4,3,4,2,2],P:[1,2,1,1,2,1,2,1],N:[3,3,3,3,2,3,2,2]};
+function arr2ans(o){const a={};STYLES.forEach(s=>o[s].forEach((v,i)=>a[s+(i+1)]=v));return a;}
+function sampleRes(){
+  const ts=new Date(2026,9,16).getTime();
+  return {
+    a:hydrate({ans:arr2ans(A1),child:'Mateo',age:9,parent:'Ana',role:'Madre',other:'Luis',ts}),
+    b:hydrate({ans:arr2ans(A2),child:'Mateo',age:9,parent:'Luis',role:'Padre',other:'Ana',ts})
+  };
+}
+//#LOGIC_END
+
+/* ---------- Interfaz ---------- */
+const $=id=>document.getElementById(id);
+const KEY='testCrianza.v1';
+function loadAll(){try{return JSON.parse(localStorage.getItem(KEY)||'[]');}catch(e){return [];}}
+function saveRec(rec){try{const l=loadAll().filter(r=>!(r.child.toLowerCase()===rec.child.toLowerCase()&&r.parent.toLowerCase()===rec.parent.toLowerCase()));l.push(rec);localStorage.setItem(KEY,JSON.stringify(l.slice(-8)));}catch(e){}}
+function findOther(res){
+  const l=loadAll().filter(r=>r.child.toLowerCase()===res.child.toLowerCase()&&r.parent.toLowerCase()!==res.parent.toLowerCase());
+  return l.length?hydrate(l[l.length-1]):null;
+}
+const state={child:'',age:9,parent:'',role:'Madre',other:'',page:0,ans:{}};
+let cur={doc:null,tab:'summary'};
+
+function show(id){['s-intro','s-quiz','s-result'].forEach(x=>{$(x).hidden=x!==id;});window.scrollTo(0,0);}
+
+/* inicio */
+(function(){const sel=$('age');for(let a=6;a<=14;a++){const o=document.createElement('option');o.value=a;o.textContent=a+' años';if(a===9)o.selected=true;sel.appendChild(o);}})();
+function renderSaved(){
+  const l=loadAll(),box=$('saved');
+  if(!l.length){box.hidden=true;return;}
+  box.hidden=false;
+  $('saved-list').innerHTML=l.map((r,i)=>[i,r]).reverse().map(([i,r])=>'<li><div><strong>'+esc(r.child)+'</strong> · '+esc(r.role)+': '+esc(r.parent)+'<br><span class="fine">'+esc(fmtDate(r.ts))+'</span></div><button class="btn ghost sm" type="button" data-open="'+i+'">Abrir</button></li>').join('');
+}
+$('saved-list').addEventListener('click',e=>{
+  const b=e.target.closest('[data-open]');if(!b)return;
+  const rec=loadAll()[+b.dataset.open];if(!rec)return;
+  const res=hydrate(rec);renderResult(res,findOther(res),false);
+});
+let wipeArmed=false;
+$('wipe').addEventListener('click',()=>{
+  if(!wipeArmed){wipeArmed=true;$('wipe').textContent='¿Seguro? Pulse otra vez para borrar';setTimeout(()=>{wipeArmed=false;$('wipe').textContent='Borrar datos guardados';},5000);return;}
+  try{localStorage.removeItem(KEY);}catch(e){}
+  wipeArmed=false;$('wipe').textContent='Borrar datos guardados';renderSaved();
+});
+$('form').addEventListener('submit',e=>{
+  e.preventDefault();
+  const child=$('child').value.trim(),parent=$('parent').value.trim(),err=$('formerr');
+  if(!child||!parent){err.textContent='Escriba el nombre del niño o niña y el de quien responde.';err.hidden=false;return;}
+  err.hidden=true;
+  Object.assign(state,{child,parent,age:+$('age').value,role:$('role').value,other:$('other').value.trim(),page:0,ans:{}});
+  renderQuiz();show('s-quiz');
+});
+$('btn-demo').addEventListener('click',()=>{const s=sampleRes();renderResult(s.a,s.b,true);});
+
+/* cuestionario */
+function qHTML(q,n){
+  const v=state.ans[q.id];
+  return '<div class="q" id="q-'+q.id+'" role="radiogroup" aria-labelledby="t-'+q.id+'">'+
+    '<p class="qt" id="t-'+q.id+'"><span class="qn">'+n+'.</span>'+esc(q.t.replace(/\{h\}/g,state.child))+'</p>'+
+    '<div class="scale">'+[1,2,3,4,5].map(i=>'<label><input type="radio" name="'+q.id+'" value="'+i+'" aria-label="'+i+', '+LIK[i]+'"'+(v===i?' checked':'')+'><span>'+i+'</span></label>').join('')+'</div>'+
+    '<div class="scale-legend"><span>1 Nunca</span><span class="picked" id="p-'+q.id+'">'+(v?LIK[v]:'')+'</span><span>5 Siempre</span></div></div>';
+}
+function updateProgress(){
+  const n=Object.keys(state.ans).length;
+  $('pfill').style.width=(n/32*100)+'%';
+  $('pbar').setAttribute('aria-valuenow',n);
+}
+function renderQuiz(){
+  const p=state.page;
+  $('qwho').textContent=state.child+' · '+state.role+': '+state.parent;
+  $('qstep').textContent='Parte '+(p+1)+' de 8';
+  $('qlist').innerHTML=QUIZ.slice(p*4,p*4+4).map((q,i)=>qHTML(q,p*4+i+1)).join('');
+  $('qerr').hidden=true;
+  $('qnext').textContent=p===7?'Ver mi informe':'Siguiente';
+  updateProgress();
+}
+$('qlist').addEventListener('change',e=>{
+  if(e.target.type!=='radio')return;
+  state.ans[e.target.name]=+e.target.value;
+  $('p-'+e.target.name).textContent=LIK[+e.target.value];
+  $('q-'+e.target.name).classList.remove('missing');
+  updateProgress();
+});
+$('qprev').addEventListener('click',()=>{if(state.page===0){show('s-intro');return;}state.page--;renderQuiz();window.scrollTo(0,0);});
+$('qnext').addEventListener('click',()=>{
+  const qs=QUIZ.slice(state.page*4,state.page*4+4),miss=qs.filter(q=>!state.ans[q.id]);
+  if(miss.length){
+    $('qerr').hidden=false;
+    qs.forEach(q=>$('q-'+q.id).classList.toggle('missing',!state.ans[q.id]));
+    $('q-'+miss[0].id).scrollIntoView({block:'center'});return;
+  }
+  if(state.page<7){state.page++;renderQuiz();window.scrollTo(0,0);return;}
+  const ts=Date.now();
+  const rec={ans:state.ans,child:state.child,age:state.age,parent:state.parent,role:state.role,other:state.other,ts};
+  saveRec(rec);
+  const res=hydrate(rec);
+  renderResult(res,findOther(res),false);
+  renderSaved();
+});
+
+/* resultado */
+function blockHTML(b){
+  switch(b.k){
+    case 'p': return '<p class="para">'+esc(b.t)+'</p>';
+    case 'note': return '<p class="fine">'+esc(b.t)+'</p>';
+    case 'ul': return '<ul class="list">'+b.t.map(x=>'<li>'+esc(x)+'</li>').join('')+'</ul>';
+    case 'dom': return '<div class="dom"><h4>'+esc(b.h)+'</h4><p>'+esc(b.t)+'</p></div>';
+    case 'style': return '<div class="hero" style="--c:'+SC[b.s]+'"><p class="eyebrow">Estilo predominante</p><h3>'+esc(SN[b.s])+'</h3><p class="slogan">'+esc(SLOGAN[b.s])+'</p><p class="para">'+esc(SDESC[b.s].replace(/\{h\}/g,b.c))+'</p></div>';
+    case 'bars': return '<div class="bars" role="list" aria-label="Puntaje por estilo">'+STYLES.map(s=>'<div class="bar" role="listitem" style="--c:'+SC[s]+'"><span>'+esc(SSHORT[s])+(s===b.res.top?'<span class="tag" style="color:'+SC[s]+'">predominante</span>':'')+'</span><b>'+b.res.pct[s]+'%</b><div class="track"><i style="width:'+b.res.pct[s]+'%"></i></div></div>').join('')+'</div>';
+    case 'quad': return quadHTML(b.res,b.other);
+    case 'cmp': return '<div class="cmp">'+STYLES.map(s=>'<div class="cmp-s" style="--c:'+SC[s]+'"><strong>'+esc(SSHORT[s])+'</strong><div class="cmp-r"><span>'+esc(b.res.parent)+'</span><div class="track"><i style="width:'+b.res.pct[s]+'%"></i></div><em>'+b.res.pct[s]+'%</em></div><div class="cmp-r two"><span>'+esc(b.other.parent)+'</span><div class="track"><i style="width:'+b.other.pct[s]+'%"></i></div><em>'+b.other.pct[s]+'%</em></div></div>').join('')+'</div>';
+  }
+  return '';
+}
+function quadHTML(res,other){
+  const L=44,T=14,W=280,H=280,px=v=>L+W*v/100,py=v=>T+H*(1-v/100);
+  const ini=n=>esc((n.trim()[0]||'?').toUpperCase());
+  const rect=(x,y,s)=>'<rect x="'+x+'" y="'+y+'" width="'+W/2+'" height="'+H/2+'" style="fill:'+SC[s]+';fill-opacity:.14"/>';
+  let g=rect(L,T,'P')+rect(L+W/2,T,'D')+rect(L,T+H/2,'N')+rect(L+W/2,T+H/2,'A');
+  [25,50,75].forEach(v=>{g+='<line x1="'+px(v)+'" y1="'+T+'" x2="'+px(v)+'" y2="'+(T+H)+'" style="stroke:var(--grid);stroke-width:1"/><line x1="'+L+'" y1="'+py(v)+'" x2="'+(L+W)+'" y2="'+py(v)+'" style="stroke:var(--grid);stroke-width:1"/>';});
+  g+='<line x1="'+px(50)+'" y1="'+T+'" x2="'+px(50)+'" y2="'+(T+H)+'" style="stroke:var(--muted);stroke-width:1;stroke-dasharray:3 3"/><line x1="'+L+'" y1="'+py(50)+'" x2="'+(L+W)+'" y2="'+py(50)+'" style="stroke:var(--muted);stroke-width:1;stroke-dasharray:3 3"/>';
+  g+='<rect x="'+L+'" y="'+T+'" width="'+W+'" height="'+H+'" style="fill:none;stroke:var(--ink);stroke-width:1.5"/>';
+  const ql=(t,s,x,y,a)=>'<text x="'+x+'" y="'+y+'" text-anchor="'+a+'" style="fill:'+SC[s]+'">'+t+'</text>';
+  g+=ql('PERMISIVO','P',L+8,T+18,'start')+ql('DEMOCRÁTICO','D',L+W-8,T+18,'end')+ql('INDIFERENTE','N',L+8,T+H-10,'start')+ql('AUTORITARIO','A',L+W-8,T+H-10,'end');
+  g+='<text x="'+(L+W/2)+'" y="'+(T+H+30)+'" text-anchor="middle">Exigencia y control →</text><text transform="translate(14 '+(T+H/2)+') rotate(-90)" text-anchor="middle">Calidez y receptividad →</text>';
+  const dot=(r,fill)=>'<circle cx="'+px(r.exiP)+'" cy="'+py(r.calP)+'" r="11" style="fill:'+(fill?'var(--btn)':'var(--surface)')+';stroke:var(--btn);stroke-width:2.5"/><text x="'+px(r.exiP)+'" y="'+(py(r.calP)+4)+'" text-anchor="middle" style="fill:'+(fill?'var(--btn-ink)':'var(--ink)')+';font-size:12px">'+ini(r.parent)+'</text>';
+  if(other)g+=dot(other,false);
+  g+=dot(res,true);
+  const desc='Plano de crianza. '+res.parent+': calidez '+res.calP+' de 100, exigencia '+res.exiP+' de 100.'+(other?' '+other.parent+': calidez '+other.calP+' de 100, exigencia '+other.exiP+' de 100.':'');
+  return '<div class="quadbox"><svg class="quadsvg" viewBox="0 0 340 352" role="img" aria-label="'+esc(desc)+'">'+g+'</svg>'+
+    '<div class="quadleg"><span><i class="dot fill"></i>'+esc(res.parent)+'</span>'+(other?'<span><i class="dot"></i>'+esc(other.parent)+'</span>':'')+'</div>'+
+    '<p class="fine" style="text-align:center">'+esc(res.parent)+': calidez '+level(res.calP)+' ('+res.calP+'/100), exigencia '+level(res.exiP)+' ('+res.exiP+'/100)</p></div>';
+}
+function secHTML(secs){return secs.map(s=>'<section class="sec"><h2>'+esc(s.t)+'</h2>'+s.b.map(blockHTML).join('')+'</section>').join('');}
+function setTab(t){
+  cur.tab=t;
+  ['summary','full'].forEach(x=>{$('tab-'+x).setAttribute('aria-selected',x===t);$('view-'+x).hidden=x!==t;});
+  $('copyta').hidden=true;$('copymsg').textContent='';
+}
+document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>{setTab(b.dataset.tab);window.scrollTo(0,0);}));
+function renderResult(res,other,demo){
+  cur.child=res.child;cur.res=res;cur.other=other;cur.demo=demo;
+  cur.doc=buildDoc(res,other);
+  $('demo-banner').hidden=!demo;
+  $('r-child').textContent=res.child;
+  $('r-ficha').innerHTML=cur.doc.header.slice(1).map(([k,v])=>'<div><dt>'+esc(k)+'</dt><dd>'+esc(v)+'</dd></div>').join('');
+  $('view-summary').innerHTML='<h2 style="font-size:26px">Resumen del informe</h2>'+secHTML(cur.doc.summary);
+  $('view-full').innerHTML='<h2 style="font-size:26px">Informe completo</h2>'+secHTML(cur.doc.full);
+  $('btn-other').hidden=demo;
+  $('btn-new').textContent=demo?'Volver al inicio':'Nueva evaluación';
+  setTab('summary');show('s-result');
+}
+$('btn-copy').addEventListener('click',()=>{
+  const t=toText(cur.doc,cur.tab),ta=$('copyta');
+  const done=ok=>{
+    $('copymsg').textContent=ok?'Texto copiado. Puede pegarlo en Word o en un mensaje.':'No se pudo copiar de forma automática. Seleccione y copie el texto de abajo.';
+    if(!ok){ta.hidden=false;ta.value=t;ta.focus();ta.select();}
+  };
+  try{navigator.clipboard.writeText(t).then(()=>done(true),()=>done(false));}catch(e){done(false);}
+});
+function resetForm(prefill){
+  $('child').value=prefill?prefill.child:'';$('age').value=prefill?prefill.age:9;
+  $('parent').value=prefill?prefill.parent:'';$('role').value=prefill?prefill.role:'Madre';$('other').value=prefill?prefill.other:'';
+  $('formerr').hidden=true;renderSaved();show('s-intro');
+  if(prefill)$('parent').focus();
+}
+$('btn-new').addEventListener('click',()=>resetForm(null));
+$('btn-other').addEventListener('click',()=>{
+  const r=cur.res;
+  resetForm({child:r.child,age:r.age,parent:cur.other?cur.other.parent:r.otherName,role:cur.other?cur.other.role:(r.role==='Madre'?'Padre':'Madre'),other:r.parent});
+});
+renderSaved();
+</script>
+
+</body></html>
